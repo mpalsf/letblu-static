@@ -12,7 +12,7 @@
 @font-face {
 	font-family: Genericons;
 	src: url(Genericons.eot);
-	src: url(Genericons.eot%3F) format("embedded-opentype");
+	src: url(Genericons.eot) format("embedded-opentype");
 	font-weight: 400;
 	font-style: normal;
 }
