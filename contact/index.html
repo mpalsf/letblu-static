@@ -233,6 +233,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 	<div class="fl-module-content fl-node-content">
 		<div class="fl-rich-text">
 	<form
+	  id="contact-form"
 	  name="contact"
 	  method="POST"
 	  data-netlify="true"
@@ -285,6 +286,46 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 	    <button type="submit">Send</button>
 	  </p>
 	</form>
+<script>
+(function () {
+  function encode(data) {
+    return Object.keys(data)
+      .map(function (key) {
+        return encodeURIComponent(key) + "=" + encodeURIComponent(data[key]);
+      })
+      .join("&");
+  }
+
+  var form = document.getElementById("contact-form");
+  if (!form) return;
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    var formData = new FormData(form);
+    var data = {};
+    formData.forEach(function (value, key) {
+      data[key] = value;
+    });
+
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: encode(data),
+    })
+      .then(function () {
+        window.location.href = "/thank-you.html";
+      })
+      .catch(function (error) {
+        alert(
+          "Sorry, something went wrong submitting the form. Please try again or email info@letblu.com directly. (" +
+            error +
+            ")"
+        );
+      });
+  });
+})();
+</script>
 </div>
 	</div>
 </div>
