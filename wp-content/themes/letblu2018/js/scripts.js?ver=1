@@ -1,0 +1,26 @@
+
+
+jQuery(document).ready(
+  
+  function () {
+	
+		jQuery('.mobile-nav').click(function() {
+			jQuery('#nav .menu-header').toggle();
+			return false;
+		});	
+		
+	  //jQuery(".various").fancybox();	
+
+    //jQuery('.cs').codeslider();
+
+	}
+);
+
+
+jQuery(window).scroll(function() {
+  if (jQuery(document).scrollTop() > 50) {
+    jQuery('header').addClass('shrink');
+  } else {
+    jQuery('header').removeClass('shrink');
+  }
+});
